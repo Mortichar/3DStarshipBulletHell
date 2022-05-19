@@ -6,13 +6,16 @@ using UnityEngine.VFX;
 public class SpawnRipples : MonoBehaviour
 {
     public GameObject shieldRipples;
+    public Transform shieldTransform;
+    
     private VisualEffect shieldRipplesVfx;
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Projectile")
         {
-            var ripples = Instantiate(shieldRipples, transform) as GameObject;
+            // instantiate the ripples on the same transform as the shield
+            var ripples = Instantiate(shieldRipples, shieldTransform) as GameObject;
             shieldRipplesVfx = shieldRipples.GetComponent<VisualEffect>();
             shieldRipplesVfx.SetVector3("CollisionCenter", collision.contacts[0].point);
 

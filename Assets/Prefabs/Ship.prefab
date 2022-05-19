@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldRipples: {fileID: 1721873365715628643, guid: 474f6beb7d6e6f9418037e527ebbf680,
     type: 3}
+  shieldTransform: {fileID: 3503946648848727458}
 --- !u!1 &3739734905491557248
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,10 +31,4 @@ public class Shield : MonoBehaviour
         
         return mesh;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

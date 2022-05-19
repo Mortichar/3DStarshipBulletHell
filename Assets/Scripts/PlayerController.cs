@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+
+    InputWrapper input;
+
     private new Rigidbody rigidbody;
+    private PlayerInput playerInput;
 
     [Min(1)]
     public float movementForce = 10f;
@@ -13,28 +18,39 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
         gameObject.tag = "Player";
+    }
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+        playerInput = GetComponent<PlayerInput>();
+
+        input = new();
+    }
+
+    private void OnEnable()
+    {
+        input.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        input.Player.Disable();
+    }
+
+
+    public void Move(Vector2 movement)
+    {
+        rigidbody.AddForce(transform.up * movementForce * movement.y);
+        var angle = Vector3.Cross(transform.up, transform.right);
+        rigidbody.AddTorque(angle * torque * movement.x);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        float moveVertical = Input.GetAxis("Vertical");
-        float moveHorizontal = Input.GetAxis("Horizontal");
-
-
-        if(moveVertical != 0)
-        {
-            rigidbody.AddForce(transform.up * movementForce * moveVertical);
-        }
-
-        if(moveHorizontal != 0)
-        {
-            var angle = Vector3.Cross(transform.up, transform.right);
-            rigidbody.AddTorque(angle * torque * moveHorizontal);
-        }
-
-        
+        Move(input.Player.Move.ReadValue<Vector2>());
     }
 }

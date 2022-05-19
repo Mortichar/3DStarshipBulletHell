@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
     private new Camera camera;
-
+    private InputWrapper input;
+    
     public float zoomSpeed;
     public float minZoomDistance;
     public float mazZoomDistance;
@@ -21,16 +23,36 @@ public class CameraController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        var zoom = Input.GetAxis("Zoom");
+        input = new();
+        input.Camera.Zoom.performed += Zoom;
+    }
+
+    private void OnEnable()
+    {
+        input.Camera.Enable();
+    }
+
+    private void OnDisable()
+    {
+        input.Camera.Disable();
+    }
+
+    void Zoom(InputAction.CallbackContext context)
+    {
+        var zoom = context.ReadValue<float>();
 
         var currentZ = Mathf.Abs(camera.transform.position.z);
         var newZ = currentZ - zoom * zoomSpeed;
         newZ = -Mathf.Clamp(newZ, minZoomDistance, mazZoomDistance);
 
-        camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, newZ);
+        camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, newZ);        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if(player == null)
         {

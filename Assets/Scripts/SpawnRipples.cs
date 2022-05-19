@@ -14,7 +14,7 @@ public class SpawnRipples : MonoBehaviour
         {
             var ripples = Instantiate(shieldRipples, transform) as GameObject;
             shieldRipplesVfx = shieldRipples.GetComponent<VisualEffect>();
-            shieldRipplesVfx.SetVector3("SphereCenter", collision.contacts[0].point);
+            shieldRipplesVfx.SetVector3("CollisionCenter", collision.contacts[0].point);
 
             // destroy in short delay
             Destroy(ripples, 2);

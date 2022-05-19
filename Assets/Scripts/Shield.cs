@@ -4,7 +4,6 @@ using UnityEngine;
 using Code.Hexasphere;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-[ExecuteInEditMode]
 public class Shield : MonoBehaviour
 {
     public float radius = 2f;

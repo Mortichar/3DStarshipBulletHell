@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     InputWrapper input;
 
     private new Rigidbody rigidbody;
-    private PlayerInput playerInput;
 
     [Min(1)]
     public float movementForce = 10f;
@@ -24,13 +23,11 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        playerInput = GetComponent<PlayerInput>();
-
-        input = new();
     }
 
     private void OnEnable()
     {
+        input = new();
         input.Player.Enable();
     }
 

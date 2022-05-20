@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 391879984043496279}
   - component: {fileID: 1505130520}
   - component: {fileID: 1505130524}
+  - component: {fileID: 2008807693706931251}
   - component: {fileID: 1505130522}
   - component: {fileID: 4317515357079062843}
-  - component: {fileID: 2008807693706931251}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -75,6 +75,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementForce: 10
   torque: 10
+--- !u!114 &2008807693706931251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025673273487116781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c32431ec78ea74ab4f338c95797ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldRipples: {fileID: 1721873365715628643, guid: 474f6beb7d6e6f9418037e527ebbf680,
+    type: 3}
+  shieldTransform: {fileID: 3503946648848727458}
 --- !u!54 &1505130522
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105,21 +120,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8547471881871753710, guid: ddbb4c8426dcb574dabec69179fa43c6, type: 3}
---- !u!114 &2008807693706931251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025673273487116781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c32431ec78ea74ab4f338c95797ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldRipples: {fileID: 1721873365715628643, guid: 474f6beb7d6e6f9418037e527ebbf680,
-    type: 3}
-  shieldTransform: {fileID: 3503946648848727458}
 --- !u!1 &3739734905491557248
 GameObject:
   m_ObjectHideFlags: 0

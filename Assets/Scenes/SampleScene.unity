@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505130522, guid: 77e15fc34a56cfa4cb574e2010576134, type: 3}
       propertyPath: m_Constraints
-      value: 56
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 1505130523, guid: 77e15fc34a56cfa4cb574e2010576134, type: 3}
       propertyPath: m_Convex

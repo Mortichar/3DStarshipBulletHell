@@ -134,17 +134,23 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 8
+      - m_Value: 40
         m_Name: GravityScale
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 2
         m_Name: ConstantSpinScale
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 2
         m_Name: StartingSpinScale
         m_Overridden: 1
-      - m_Value: 10
+      - m_Value: 4
         m_Name: Lifetime
+        m_Overridden: 0
+      - m_Value: 5
+        m_Name: AccretionRingRadius
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: KillRadius
         m_Overridden: 1
     m_Vector2f:
       m_Array: []

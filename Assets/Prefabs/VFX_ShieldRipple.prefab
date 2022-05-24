@@ -54,7 +54,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 19.785667, y: 1.7565747, z: -1.2270523}
+      - m_Value: {x: 25.23669, y: 2.0295148, z: -1.2027214}
         m_Name: CollisionCenter
         m_Overridden: 1
     m_Vector4f:

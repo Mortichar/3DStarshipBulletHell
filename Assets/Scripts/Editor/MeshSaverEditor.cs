@@ -4,6 +4,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Adds the ability to save a generated Mesh object inside of the MeshFilter component.
+/// </summary>
 public static class MeshSaverEditor {
 
 	[MenuItem("CONTEXT/MeshFilter/Save Mesh...")]

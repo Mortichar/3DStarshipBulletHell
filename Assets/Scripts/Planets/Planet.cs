@@ -26,6 +26,7 @@ public class Planet : MonoBehaviour
     [SerializeField, HideInInspector]
     MeshFilter[] meshFilters;
     TerrainFace[] terrainFaces;
+    public EllipticalOrbit orbit;
 
 
     void Initialize()
@@ -113,6 +114,18 @@ public class Planet : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(Vector3.up * Time.deltaTime * 10f, Space.World);
+        //rotate planets around Y axis
+        // TODO randomize planet axes
+        transform.Rotate(Vector3.up * Time.deltaTime * 300f, Space.World);
+
+        if(orbit == null)
+        {
+            orbit = ScriptableObject.CreateInstance<EllipticalOrbit>();
+            orbit.SemiMajorAxis = shapeSettings.planetRadius * 20;
+            orbit.Eccentricity = 1 / Mathf.Sqrt(2);
+        }
+
+        var _2dposition = orbit.GetPosition(Time.time / 10);
+        transform.position = new Vector3(_2dposition.x, _2dposition.y, transform.position.z);
     }
 }

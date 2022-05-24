@@ -241,7 +241,7 @@ MonoBehaviour:
   shapeSettings: {fileID: 11400000, guid: bb563e90654574d4cb7d931456630f79, type: 2}
   colourSettings: {fileID: 11400000, guid: 4d2914748ff1c4089acd77328cfcb02e, type: 2}
   shapeSettingsFoldout: 1
-  colourSettingsFoldout: 1
+  colourSettingsFoldout: 0
   meshFilters:
   - {fileID: 1467922635}
   - {fileID: 1682778373}
@@ -249,6 +249,7 @@ MonoBehaviour:
   - {fileID: 163535398}
   - {fileID: 31461607}
   - {fileID: 1015541862}
+  orbit: {fileID: 693484543}
 --- !u!4 &156476483
 Transform:
   m_ObjectHideFlags: 0
@@ -256,8 +257,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156476481}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 200, y: 0, z: 100}
+  m_LocalRotation: {x: 0, y: -0.69577086, z: 0, w: 0.7182639}
+  m_LocalPosition: {x: -311.31323, y: 177.60078, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1532,6 +1533,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &693484543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67fc9a5c15352348b31e9134a332397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

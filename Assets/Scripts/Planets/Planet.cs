@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class Planet : MonoBehaviour
 {
 
@@ -13,7 +12,7 @@ public class Planet : MonoBehaviour
     public FaceRenderMask faceRenderMask;
 
     public ShapeSettings shapeSettings;
-    public ColourSettings colourSettings;
+    public ColorSettings colourSettings;
 
     [HideInInspector]
     public bool shapeSettingsFoldout;
@@ -21,13 +20,16 @@ public class Planet : MonoBehaviour
     public bool colourSettingsFoldout;
 
     ShapeGenerator shapeGenerator = new ShapeGenerator();
-    ColourGenerator colourGenerator = new ColourGenerator();
+    ColorGenerator colourGenerator = new ColorGenerator();
 
     [SerializeField, HideInInspector]
     MeshFilter[] meshFilters;
     TerrainFace[] terrainFaces;
-    public EllipticalOrbit orbit;
 
+    void Awake()
+    {
+        GeneratePlanet();
+    }
 
     void Initialize()
     {
@@ -38,7 +40,10 @@ public class Planet : MonoBehaviour
         {
             meshFilters = new MeshFilter[6];
         }
-        terrainFaces = new TerrainFace[6];
+        if (terrainFaces == null || terrainFaces.Length == 0)
+        {
+            terrainFaces = new TerrainFace[6];
+        }
 
         Vector3[] directions = { Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
 
@@ -54,9 +59,13 @@ public class Planet : MonoBehaviour
                 meshFilters[i] = meshObj.AddComponent<MeshFilter>();
                 meshFilters[i].sharedMesh = new Mesh();
             }
-            meshFilters[i].GetComponent<MeshRenderer>().sharedMaterial = colourSettings.planetMaterial;
+            meshFilters[i].GetComponent<MeshRenderer>().material = colourSettings.planetMaterial;
 
-            terrainFaces[i] = new TerrainFace(shapeGenerator, meshFilters[i].sharedMesh, resolution, directions[i]);
+            if (terrainFaces[i] == null)
+            {
+                terrainFaces[i] = new TerrainFace(shapeGenerator, meshFilters[i].sharedMesh, resolution, directions[i]);
+            }
+            
             bool renderFace = faceRenderMask == FaceRenderMask.All || (int)faceRenderMask - 1 == i;
             meshFilters[i].gameObject.SetActive(renderFace);
         }
@@ -110,22 +119,5 @@ public class Planet : MonoBehaviour
                 terrainFaces[i].UpdateUVs(colourGenerator);
             }
         }
-    }
-
-    private void Update()
-    {
-        //rotate planets around Y axis
-        // TODO randomize planet axes
-        transform.Rotate(Vector3.up * Time.deltaTime * 300f, Space.World);
-
-        if(orbit == null)
-        {
-            orbit = ScriptableObject.CreateInstance<EllipticalOrbit>();
-            orbit.SemiMajorAxis = shapeSettings.planetRadius * 20;
-            orbit.Eccentricity = 1 / Mathf.Sqrt(2);
-        }
-
-        var _2dposition = orbit.GetPosition(Time.time / 10);
-        transform.position = new Vector3(_2dposition.x, _2dposition.y, transform.position.z);
     }
 }

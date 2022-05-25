@@ -62,7 +62,7 @@ public class TerrainFace
         mesh.uv = uv;
     }
 
-    public void UpdateUVs(ColourGenerator colourGenerator)
+    public void UpdateUVs(ColorGenerator colourGenerator)
     {
         Vector2[] uv = mesh.uv;
 

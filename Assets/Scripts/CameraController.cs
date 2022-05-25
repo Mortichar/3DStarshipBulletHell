@@ -7,6 +7,8 @@ public class CameraController : MonoBehaviour
 {
     private InputWrapper input;
 
+    public new Camera camera;
+
     public float zoomSpeed = 25f;
     public float rotateSpeed = 25f;
 
@@ -92,14 +94,11 @@ public class CameraController : MonoBehaviour
             offset = Quaternion.AngleAxis(player.transform.rotation.z, Vector3.forward) * new Vector3(0, 0, -targetDistance);
             offset = Quaternion.AngleAxis(targetYRot, Vector3.up) * offset;
             offset = Quaternion.AngleAxis(targetXRot, Vector3.right) * offset;
-            //var newPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - targetDistance);
 
-            //transform.position = newPosition;
-            //transform.RotateAround(player.transform.position, Vector3.up, targetYRot);
-            //transform.RotateAround(player.transform.position, transform.right, targetXRot);
+            transform.position = player.transform.position + new Vector3(0, 0, offset.z);
 
-            transform.position = player.transform.position + offset;
-            transform.LookAt(player.transform);
+            camera.transform.localPosition = new Vector3(offset.x, offset.y, 0);
+            camera.transform.LookAt(player.transform);
 
         }
     }

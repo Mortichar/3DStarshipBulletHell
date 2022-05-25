@@ -7,9 +7,9 @@ public class StarSystem : MonoBehaviour
     public int seed = 1337;
 
 
-    private List<GameObject> stars;
-    private List<Planet> planets;
-    private List<Planet> moons;
+    private List<GameObject> stars = new();
+    private List<Planet> planets = new();
+    private List<Planet> moons = new();
 
 
     public List<GameObject> StarPrefabs;

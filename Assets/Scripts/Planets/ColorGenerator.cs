@@ -6,17 +6,12 @@ public class ColorGenerator
 {
 
     ColorSettings settings;
-    Texture2D texture;
     const int textureResolution = 50;
     INoiseFilter biomeNoiseFilter;
 
     public void UpdateSettings(ColorSettings settings)
     {
         this.settings = settings;
-        if (texture == null || texture.height != settings.biomeColourSettings.biomes.Length)
-        {
-            texture = new Texture2D(textureResolution*2, settings.biomeColourSettings.biomes.Length, TextureFormat.RGBA32, false);
-        }
         biomeNoiseFilter = NoiseFilterFactory.CreateNoiseFilter(settings.biomeColourSettings.noise);
     }
 
@@ -44,8 +39,9 @@ public class ColorGenerator
         return biomeIndex / Mathf.Max(1, numBiomes - 1);
     }
 
-    public void UpdateColours()
+    public Texture2D UpdateColours()
     {
+        var texture = new Texture2D(textureResolution * 2, settings.biomeColourSettings.biomes.Length, TextureFormat.RGBA32, false);
         Color[] colours = new Color[texture.width * texture.height];
         int colourIndex = 0;
         foreach (var biome in settings.biomeColourSettings.biomes)
@@ -60,12 +56,13 @@ public class ColorGenerator
                     gradientCol = biome.gradient.Evaluate((i-textureResolution) / (textureResolution - 1f));
                 }
                 Color tintCol = biome.tint;
+                // mix based on tint
                 colours[colourIndex] = gradientCol * (1 - biome.tintPercent) + tintCol * biome.tintPercent;
                 colourIndex++;
             }
         }
         texture.SetPixels(colours);
         texture.Apply();
-        settings.planetMaterial.SetTexture("_texture", texture);
+        return texture;
     }
 }

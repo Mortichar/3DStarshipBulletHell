@@ -12,13 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48e7d87040ce4f66a07c75b885f4f80, type: 3}
   m_Name: Moon
   m_EditorClassIdentifier: 
-  planetRadius: 1
+  planetRadius: 5
   noiseLayers:
   - enabled: 1
     useFirstLayerAsMask: 0
     noiseSettings:
       filterType: 0
       simpleNoiseSettings:
+        strength: 2.36
+        numLayers: 2
+        baseRoughness: 6.89
+        roughness: 0.93
+        persistence: 1
+        centre: {x: 0, y: 0, z: 0}
+        minValue: 3.25
+      ridgidNoiseSettings:
         strength: 0
         numLayers: 0
         baseRoughness: 0
@@ -26,10 +34,23 @@ MonoBehaviour:
         persistence: 0
         centre: {x: 0, y: 0, z: 0}
         minValue: 0
+        weightMultiplier: 0
+  - enabled: 1
+    useFirstLayerAsMask: 1
+    noiseSettings:
+      filterType: 0
+      simpleNoiseSettings:
+        strength: 1
+        numLayers: 3
+        baseRoughness: 5.97
+        roughness: 0.68
+        persistence: 1.06
+        centre: {x: 0, y: 0, z: 0}
+        minValue: 1.07
       ridgidNoiseSettings:
-        strength: 0
-        numLayers: 0
-        baseRoughness: 0
+        strength: 1.47
+        numLayers: 1
+        baseRoughness: 10.48
         roughness: 0
         persistence: 0
         centre: {x: 0, y: 0, z: 0}

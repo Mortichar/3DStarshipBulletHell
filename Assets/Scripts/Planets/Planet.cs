@@ -9,7 +9,7 @@ public class Planet : MonoBehaviour
     public int resolution = 10;
     public bool autoUpdate = true;
     public enum FaceRenderMask { All, Top, Bottom, Left, Right, Front, Back };
-    public FaceRenderMask faceRenderMask;
+    public FaceRenderMask faceRenderMask = FaceRenderMask.All;
 
     public ShapeSettings shapeSettings;
     public ColorSettings colourSettings;
@@ -25,6 +25,8 @@ public class Planet : MonoBehaviour
     [SerializeField, HideInInspector]
     MeshFilter[] meshFilters;
     TerrainFace[] terrainFaces;
+    Texture2D texture;
+    Material material;
 
     void Awake()
     {
@@ -33,8 +35,10 @@ public class Planet : MonoBehaviour
 
     void Initialize()
     {
-        shapeGenerator.UpdateSettings(shapeSettings);
-        colourGenerator.UpdateSettings(colourSettings);
+        if (material == null)
+        {
+            material = new Material(colourSettings.planetMaterial);
+        }
 
         if (meshFilters == null || meshFilters.Length == 0)
         {
@@ -44,6 +48,8 @@ public class Planet : MonoBehaviour
         {
             terrainFaces = new TerrainFace[6];
         }
+        shapeGenerator.UpdateSettings(shapeSettings);
+        colourGenerator.UpdateSettings(colourSettings);
 
         Vector3[] directions = { Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
 
@@ -59,7 +65,7 @@ public class Planet : MonoBehaviour
                 meshFilters[i] = meshObj.AddComponent<MeshFilter>();
                 meshFilters[i].sharedMesh = new Mesh();
             }
-            meshFilters[i].GetComponent<MeshRenderer>().material = colourSettings.planetMaterial;
+            meshFilters[i].GetComponent<MeshRenderer>().material = material;
 
             if (terrainFaces[i] == null)
             {
@@ -106,12 +112,13 @@ public class Planet : MonoBehaviour
             }
         }
 
-        colourGenerator.UpdateElevation(shapeGenerator.elevationMinMax);
+        material.SetVector("_elevationMinMax", new Vector4(shapeGenerator.elevationMinMax.Min, shapeGenerator.elevationMinMax.Max));
     }
 
     void GenerateColours()
     {
-        colourGenerator.UpdateColours();
+        texture = colourGenerator.UpdateColours();
+        material.SetTexture("_texture", texture);
         for (int i = 0; i < 6; i++)
         {
             if (meshFilters[i].gameObject.activeSelf)

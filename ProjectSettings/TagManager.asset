@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Skybox Stars
   - Water
   - UI
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 70820459
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

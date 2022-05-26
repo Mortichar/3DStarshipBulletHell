@@ -59,6 +59,8 @@ public class CameraController : MonoBehaviour
 
     void Rotate(InputAction.CallbackContext context)
     {
+        // disable rotation for now . . .
+        //return;
         if (!input.Camera.EnableRotation.IsPressed())
         {
             return;
@@ -95,9 +97,9 @@ public class CameraController : MonoBehaviour
             offset = Quaternion.AngleAxis(targetYRot, Vector3.up) * offset;
             offset = Quaternion.AngleAxis(targetXRot, Vector3.right) * offset;
 
-            transform.position = player.transform.position + new Vector3(0, 0, offset.z);
+            transform.position = player.transform.position;
 
-            camera.transform.localPosition = new Vector3(offset.x, offset.y, 0);
+            camera.transform.localPosition = offset;
             camera.transform.LookAt(player.transform);
 
         }

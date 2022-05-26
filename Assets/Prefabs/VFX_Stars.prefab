@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5524909185374663454}
   - component: {fileID: 8521943546917827421}
   - component: {fileID: 1920406048025731881}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX_Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +107,6 @@ VFXRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 70820459
+  m_SortingLayer: -1
   m_SortingOrder: 0

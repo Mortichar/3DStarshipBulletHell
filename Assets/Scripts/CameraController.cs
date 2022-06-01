@@ -24,9 +24,6 @@ public class CameraController : MonoBehaviour
     private float targetXRot = 0f;
     private float targetYRot = 0f;
 
-    // offset, calculated from targetDistance and rotation
-    private Vector3 offset;
-
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +46,6 @@ public class CameraController : MonoBehaviour
         input.Camera.Rotate.performed += Rotate;
         input.Camera.Enable();
         targetDistance = Mathf.Clamp(targetDistance, minZoomDistance, maxZoomDistance);
-        offset = new Vector3(0, 0, -targetDistance);
     }
 
     private void OnDisable()
@@ -60,17 +56,17 @@ public class CameraController : MonoBehaviour
     void Rotate(InputAction.CallbackContext context)
     {
         // disable rotation for now . . .
-        //return;
-        if (!input.Camera.EnableRotation.IsPressed())
-        {
-            return;
-        }
+        return;
+        //if (!input.Camera.EnableRotation.IsPressed())
+        //{
+        //    return;
+        //}
         
-        var rotation = context.ReadValue<Vector2>();
-        targetYRot += rotation.x * Time.deltaTime * rotateSpeed;
-        targetYRot = Mathf.Clamp(targetYRot, -80, 80);
-        targetXRot += rotation.y * Time.deltaTime * rotateSpeed;
-        targetXRot = Mathf.Clamp(targetXRot, -80, 80);
+        //var rotation = context.ReadValue<Vector2>();
+        //targetYRot += rotation.x * Time.deltaTime * rotateSpeed;
+        //targetYRot = Mathf.Clamp(targetYRot, -80, 80);
+        //targetXRot += rotation.y * Time.deltaTime * rotateSpeed;
+        //targetXRot = Mathf.Clamp(targetXRot, -80, 80);
 
     }
 
@@ -93,7 +89,7 @@ public class CameraController : MonoBehaviour
         if (player != null)
         {
             // rotate z, y, x
-            offset = Quaternion.AngleAxis(player.transform.rotation.z, Vector3.forward) * new Vector3(0, 0, -targetDistance);
+            Vector3 offset = Quaternion.AngleAxis(player.transform.rotation.z, Vector3.forward) * new Vector3(0, 0, -targetDistance);
             offset = Quaternion.AngleAxis(targetYRot, Vector3.up) * offset;
             offset = Quaternion.AngleAxis(targetXRot, Vector3.right) * offset;
 

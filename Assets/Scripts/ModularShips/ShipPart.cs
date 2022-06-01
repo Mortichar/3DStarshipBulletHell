@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShipPart : ScriptableObject
 {
     public string displayedName = "PLACEHOLDER";
-    public Mesh mesh;
+    public GameObject prefab;
     public Vector2Int dimensions = new Vector2Int(1, 1);
     
 }

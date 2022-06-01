@@ -819,6 +819,215 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ShipwrightCamera"",
+            ""id"": ""c1163d2e-4c03-4a6d-b208-f3417298d541"",
+            ""actions"": [
+                {
+                    ""name"": ""EnableRotation"",
+                    ""type"": ""Button"",
+                    ""id"": ""3734ee51-68de-4ccc-afac-cbd4a13e3d34"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""0a15a9ee-68de-449c-8be6-fe210475fb2c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""c0063616-0ab6-4a74-82e6-5c1e4a69a22a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Place"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7abbdf56-2f35-4172-8e94-28053af40ea0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""263901dc-e77b-40c4-a378-036f1bf330cb"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""EnableRotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d1687c2-eb64-4380-82a5-afc733f7b39a"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""7b3c269d-be55-4661-abfe-795028934505"",
+                    ""path"": ""Dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""23dc46a4-3919-43e0-ac5c-9c521c4f6e17"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""21b0c3ea-5171-45de-93d1-426f58690038"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5a9ba809-296f-4132-8c16-f01f4cba7a85"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""389f974a-8846-402d-bcd9-072662d50a62"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fa7e5a29-fde8-4160-90a5-b08d98c1fab4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fa17b4f4-38f4-43fe-9fc2-1d3a32c99a76"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c6aa7a2c-b93a-43bb-9d85-11692c7631d4"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6c6527f7-d5c3-4ab7-9eed-992a06edc0ce"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a06ba77-22ea-4f4e-a70b-68edad89327f"",
+                    ""path"": ""<XRController>/{Primary2DAxis}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XR"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e500853a-f7d0-4f06-9b1a-2189972d1023"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ea88199-97a2-44f4-ae35-a31e8f76cb5c"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d1dc538-6da5-42e3-adbe-460c00bcac71"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Place"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -905,6 +1114,12 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
         m_Camera_Zoom = m_Camera.FindAction("Zoom", throwIfNotFound: true);
         m_Camera_Rotate = m_Camera.FindAction("Rotate", throwIfNotFound: true);
         m_Camera_EnableRotation = m_Camera.FindAction("EnableRotation", throwIfNotFound: true);
+        // ShipwrightCamera
+        m_ShipwrightCamera = asset.FindActionMap("ShipwrightCamera", throwIfNotFound: true);
+        m_ShipwrightCamera_EnableRotation = m_ShipwrightCamera.FindAction("EnableRotation", throwIfNotFound: true);
+        m_ShipwrightCamera_Move = m_ShipwrightCamera.FindAction("Move", throwIfNotFound: true);
+        m_ShipwrightCamera_Rotate = m_ShipwrightCamera.FindAction("Rotate", throwIfNotFound: true);
+        m_ShipwrightCamera_Place = m_ShipwrightCamera.FindAction("Place", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1155,6 +1370,63 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
         }
     }
     public CameraActions @Camera => new CameraActions(this);
+
+    // ShipwrightCamera
+    private readonly InputActionMap m_ShipwrightCamera;
+    private IShipwrightCameraActions m_ShipwrightCameraActionsCallbackInterface;
+    private readonly InputAction m_ShipwrightCamera_EnableRotation;
+    private readonly InputAction m_ShipwrightCamera_Move;
+    private readonly InputAction m_ShipwrightCamera_Rotate;
+    private readonly InputAction m_ShipwrightCamera_Place;
+    public struct ShipwrightCameraActions
+    {
+        private @InputWrapper m_Wrapper;
+        public ShipwrightCameraActions(@InputWrapper wrapper) { m_Wrapper = wrapper; }
+        public InputAction @EnableRotation => m_Wrapper.m_ShipwrightCamera_EnableRotation;
+        public InputAction @Move => m_Wrapper.m_ShipwrightCamera_Move;
+        public InputAction @Rotate => m_Wrapper.m_ShipwrightCamera_Rotate;
+        public InputAction @Place => m_Wrapper.m_ShipwrightCamera_Place;
+        public InputActionMap Get() { return m_Wrapper.m_ShipwrightCamera; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ShipwrightCameraActions set) { return set.Get(); }
+        public void SetCallbacks(IShipwrightCameraActions instance)
+        {
+            if (m_Wrapper.m_ShipwrightCameraActionsCallbackInterface != null)
+            {
+                @EnableRotation.started -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnEnableRotation;
+                @EnableRotation.performed -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnEnableRotation;
+                @EnableRotation.canceled -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnEnableRotation;
+                @Move.started -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnMove;
+                @Rotate.started -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnRotate;
+                @Place.started -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnPlace;
+                @Place.performed -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnPlace;
+                @Place.canceled -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnPlace;
+            }
+            m_Wrapper.m_ShipwrightCameraActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @EnableRotation.started += instance.OnEnableRotation;
+                @EnableRotation.performed += instance.OnEnableRotation;
+                @EnableRotation.canceled += instance.OnEnableRotation;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
+                @Place.started += instance.OnPlace;
+                @Place.performed += instance.OnPlace;
+                @Place.canceled += instance.OnPlace;
+            }
+        }
+    }
+    public ShipwrightCameraActions @ShipwrightCamera => new ShipwrightCameraActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1223,5 +1495,12 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
         void OnZoom(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnEnableRotation(InputAction.CallbackContext context);
+    }
+    public interface IShipwrightCameraActions
+    {
+        void OnEnableRotation(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnPlace(InputAction.CallbackContext context);
     }
 }

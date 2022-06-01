@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4249664906966783826}
-  - component: {fileID: 5903593069935834020}
   - component: {fileID: 9020454299305629676}
   - component: {fileID: 7702518125286611883}
   m_Layer: 0
@@ -39,27 +38,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 255.3693, y: 340.7613}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!223 &5903593069935834020
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439203774634169450}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!114 &9020454299305629676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,9 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d27b66d91cade443834545ffedee8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 6614984282013602925, guid: 8087d475d94a49d4ca7cd4d029a051ac,
+  buttonPrefab: {fileID: 3341795666115327452, guid: f682eb2a0f53c2a49823b40cd9ecf125,
     type: 3}
-  shipParts: []
+  shipParts:
+  - {fileID: 11400000, guid: ee4df9232f7b76c4db4289db7242cd41, type: 2}
+  - {fileID: 11400000, guid: 4b95bf4c63c43084d96e691cf09857de, type: 2}
+  - {fileID: 11400000, guid: 1e180ff1766727545997ad60b069c608, type: 2}
+  buildingManager: {fileID: 0}
 --- !u!1 &2023044291921223909
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +161,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6278158336596223258}
   - component: {fileID: 8747770363176162692}
+  - component: {fileID: 4627702450744820512}
+  - component: {fileID: 584152720707041297}
   m_Layer: 0
   m_Name: UI_Building
   m_TagString: Untagged
@@ -228,3 +212,43 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &4627702450744820512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012754831965837360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &584152720707041297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012754831965837360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295

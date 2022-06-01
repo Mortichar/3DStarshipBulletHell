@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffe002d0122203e439cf34d184dac2c2, type: 3}
-  m_Name: Corner
+  m_Name: Shield Coil
   m_EditorClassIdentifier: 
-  displayedName: Corner
-  prefab: {fileID: 7549923021968046674, guid: ab258d6f91d19fd4cb986c9d6b68f7c3, type: 3}
+  displayedName: Shield Coil
+  prefab: {fileID: 5961945578163475516, guid: 65ac16b54a750bd44a11992064c2f3d7, type: 3}
   dimensions: {x: 1, y: 1}

@@ -828,15 +828,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Place",
-                    "type": "PassThrough",
-                    "id": "7abbdf56-2f35-4172-8e94-28053af40ea0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -993,15 +984,92 @@
                     "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Shipwright",
+            "id": "86426241-cd92-4ff5-85ce-86b5b81551f5",
+            "actions": [
+                {
+                    "name": "Place",
+                    "type": "PassThrough",
+                    "id": "f7eb0de1-d603-461e-9aa1-f10aae7d1bcc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
+                    "name": "Rotate",
+                    "type": "Button",
+                    "id": "573a5a88-799f-462c-af94-a7c34754fb6f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Remove",
+                    "type": "Button",
+                    "id": "01a0c527-fcf5-44c5-a7b8-3fc1a656fe1a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Counterrotate",
+                    "type": "Button",
+                    "id": "a39a15b7-d5bd-4b79-873c-22d45f186bb0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
                     "name": "",
-                    "id": "0d1dc538-6da5-42e3-adbe-460c00bcac71",
+                    "id": "608b4a0b-76a8-4011-8356-54d659cb41e2",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bb0e562-e80a-40d6-96e8-9eaa994ed70d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9d68a882-0924-4fdc-bafb-227c97f5ffaf",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Remove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3a45513-f48c-4fcc-8a60-208be6f434cc",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Counterrotate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

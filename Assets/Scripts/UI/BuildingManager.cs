@@ -1,54 +1,101 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class BuildingManager : MonoBehaviour
 {
-    public GameObject objectToPlace;
-
+    // Layers to place objects on (raycast target)
     public LayerMask targetLayers;
 
+    // The material to show on the object being placed
     public Material placementMaterial;
+    // The layer applied to objects placed
+    public LayerMask placedLayer;
 
 
+
+    // The object the manager is currently placing at the cursor
+    private GameObject objectToPlace;
     // the actual material of the object to be placed, before we swapped it out
     private Material cachedMaterial;
 
+    // Generated class to query for input
     private InputWrapper input;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    // Target rotation of the placing object
+    private float placementRotation = 0f;
+
 
     private void OnEnable()
     {
         input = new();
-        input.ShipwrightCamera.Enable();
+        input.Shipwright.Remove.performed += Remove;
+        input.Shipwright.Rotate.performed += Rotate;
+        input.Shipwright.Counterrotate.performed += Counterrotate;
+        input.Shipwright.Enable();
     }
 
     private void OnDisable()
     {
-        input.ShipwrightCamera.Disable();
+        input.Shipwright.Disable();
     }
 
     private bool Clicked()
     {
-        return input.ShipwrightCamera.Place.WasPressedThisFrame();
+        // ignore clicks through UI
+        if(EventSystem.current.IsPointerOverGameObject())
+        {
+            return false;
+        }
+        return input.Shipwright.Place.WasPressedThisFrame();
     }
 
     void Place()
     {
-        if(this.objectToPlace != null)
+        if (this.objectToPlace != null)
         {
-            GameObject PlacedObject = Instantiate(this.objectToPlace, this.objectToPlace.transform.position, this.objectToPlace.transform.rotation);
-            MeshRenderer renderer = PlacedObject.GetComponent<MeshRenderer>();
-            if(renderer != null && cachedMaterial != null)
+            GameObject placedObject = Instantiate(this.objectToPlace, this.objectToPlace.transform.position, this.objectToPlace.transform.rotation);
+            MeshRenderer renderer = placedObject.GetComponent<MeshRenderer>();
+            if (renderer != null && cachedMaterial != null)
             {
                 renderer.material = cachedMaterial;
             }
-            PlacedObject.layer = LayerMask.NameToLayer("ShipPiece");
+            placedObject.layer = (int) Mathf.Log(placedLayer.value, 2);
+        }
+    }
+
+    /// <summary>
+    /// Remove the ship part currently under the cursor
+    /// </summary>
+    void Remove(InputAction.CallbackContext _)
+    {
+        // cast ray from the main camera and check for collisions with ship parts
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out hit, 10000f, placedLayer))
+        {
+            // if we hit a ship part, destroy it
+            Destroy(hit.collider.gameObject);
+        }
+    }
+
+    void Rotate(InputAction.CallbackContext _)
+    {
+        placementRotation += 90f;
+        while (placementRotation > 360f)
+        {
+            placementRotation -= 360f;
+        }
+    }
+
+    void Counterrotate(InputAction.CallbackContext _)
+    {
+        placementRotation -= 90f;
+        while (placementRotation < 0f)
+        {
+            placementRotation += 360f;
         }
     }
 
@@ -64,23 +111,39 @@ public class BuildingManager : MonoBehaviour
     void Update()
     {
         // if currently building something (something has been selected in the building menu)
-        if(objectToPlace != null)
+        if (objectToPlace != null)
         {
             // do raycast from main camera to determine where to place block
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out hit, 10000f, targetLayers))
             {
+                if(!objectToPlace.activeInHierarchy)
+                {
+                    objectToPlace.SetActive(true);
+                }
                 // if the raycast hit a collider
                 if (hit.collider != null)
                 {
-                    objectToPlace.transform.position = ClosestAttachment(hit.point, hit.normal);
+                    var closestAttachment = ClosestAttachment(hit.point, hit.normal);
+                    objectToPlace.transform.position = closestAttachment;
+
+                    //rotate in direction of hit normal; objects rotate with their "bottom" on the object hovered by the cursor
                     objectToPlace.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                    
-                    if(Clicked())
+                    //rotate around the normal by however much the current placement rotation is; allows rotating to face 4 directions
+                    objectToPlace.transform.rotation = Quaternion.AngleAxis(placementRotation, hit.normal) * objectToPlace.transform.rotation;
+
+                    if (Clicked())
                     {
                         Place();
                     }
+                }
+            }
+            else
+            {
+                if(objectToPlace.activeInHierarchy)
+                {
+                    objectToPlace.SetActive(false);
                 }
             }
 
@@ -89,7 +152,7 @@ public class BuildingManager : MonoBehaviour
 
     public void SetPlacingObject(GameObject objectToPlace)
     {
-        if(this.objectToPlace != null)
+        if (this.objectToPlace != null)
         {
             Destroy(this.objectToPlace);
         }

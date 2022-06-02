@@ -850,15 +850,6 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Place"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""7abbdf56-2f35-4172-8e94-28053af40ea0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1015,15 +1006,92 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Shipwright"",
+            ""id"": ""86426241-cd92-4ff5-85ce-86b5b81551f5"",
+            ""actions"": [
+                {
+                    ""name"": ""Place"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""f7eb0de1-d603-461e-9aa1-f10aae7d1bcc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""573a5a88-799f-462c-af94-a7c34754fb6f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Remove"",
+                    ""type"": ""Button"",
+                    ""id"": ""01a0c527-fcf5-44c5-a7b8-3fc1a656fe1a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Counterrotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""a39a15b7-d5bd-4b79-873c-22d45f186bb0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
                     ""name"": """",
-                    ""id"": ""0d1dc538-6da5-42e3-adbe-460c00bcac71"",
+                    ""id"": ""608b4a0b-76a8-4011-8356-54d659cb41e2"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Place"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bb0e562-e80a-40d6-96e8-9eaa994ed70d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d68a882-0924-4fdc-bafb-227c97f5ffaf"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Remove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3a45513-f48c-4fcc-8a60-208be6f434cc"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Counterrotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1119,7 +1187,12 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
         m_ShipwrightCamera_EnableRotation = m_ShipwrightCamera.FindAction("EnableRotation", throwIfNotFound: true);
         m_ShipwrightCamera_Move = m_ShipwrightCamera.FindAction("Move", throwIfNotFound: true);
         m_ShipwrightCamera_Rotate = m_ShipwrightCamera.FindAction("Rotate", throwIfNotFound: true);
-        m_ShipwrightCamera_Place = m_ShipwrightCamera.FindAction("Place", throwIfNotFound: true);
+        // Shipwright
+        m_Shipwright = asset.FindActionMap("Shipwright", throwIfNotFound: true);
+        m_Shipwright_Place = m_Shipwright.FindAction("Place", throwIfNotFound: true);
+        m_Shipwright_Rotate = m_Shipwright.FindAction("Rotate", throwIfNotFound: true);
+        m_Shipwright_Remove = m_Shipwright.FindAction("Remove", throwIfNotFound: true);
+        m_Shipwright_Counterrotate = m_Shipwright.FindAction("Counterrotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1377,7 +1450,6 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
     private readonly InputAction m_ShipwrightCamera_EnableRotation;
     private readonly InputAction m_ShipwrightCamera_Move;
     private readonly InputAction m_ShipwrightCamera_Rotate;
-    private readonly InputAction m_ShipwrightCamera_Place;
     public struct ShipwrightCameraActions
     {
         private @InputWrapper m_Wrapper;
@@ -1385,7 +1457,6 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
         public InputAction @EnableRotation => m_Wrapper.m_ShipwrightCamera_EnableRotation;
         public InputAction @Move => m_Wrapper.m_ShipwrightCamera_Move;
         public InputAction @Rotate => m_Wrapper.m_ShipwrightCamera_Rotate;
-        public InputAction @Place => m_Wrapper.m_ShipwrightCamera_Place;
         public InputActionMap Get() { return m_Wrapper.m_ShipwrightCamera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1404,9 +1475,6 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
                 @Rotate.started -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnRotate;
-                @Place.started -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnPlace;
-                @Place.performed -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnPlace;
-                @Place.canceled -= m_Wrapper.m_ShipwrightCameraActionsCallbackInterface.OnPlace;
             }
             m_Wrapper.m_ShipwrightCameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -1420,13 +1488,67 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
-                @Place.started += instance.OnPlace;
-                @Place.performed += instance.OnPlace;
-                @Place.canceled += instance.OnPlace;
             }
         }
     }
     public ShipwrightCameraActions @ShipwrightCamera => new ShipwrightCameraActions(this);
+
+    // Shipwright
+    private readonly InputActionMap m_Shipwright;
+    private IShipwrightActions m_ShipwrightActionsCallbackInterface;
+    private readonly InputAction m_Shipwright_Place;
+    private readonly InputAction m_Shipwright_Rotate;
+    private readonly InputAction m_Shipwright_Remove;
+    private readonly InputAction m_Shipwright_Counterrotate;
+    public struct ShipwrightActions
+    {
+        private @InputWrapper m_Wrapper;
+        public ShipwrightActions(@InputWrapper wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Place => m_Wrapper.m_Shipwright_Place;
+        public InputAction @Rotate => m_Wrapper.m_Shipwright_Rotate;
+        public InputAction @Remove => m_Wrapper.m_Shipwright_Remove;
+        public InputAction @Counterrotate => m_Wrapper.m_Shipwright_Counterrotate;
+        public InputActionMap Get() { return m_Wrapper.m_Shipwright; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ShipwrightActions set) { return set.Get(); }
+        public void SetCallbacks(IShipwrightActions instance)
+        {
+            if (m_Wrapper.m_ShipwrightActionsCallbackInterface != null)
+            {
+                @Place.started -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnPlace;
+                @Place.performed -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnPlace;
+                @Place.canceled -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnPlace;
+                @Rotate.started -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnRotate;
+                @Remove.started -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnRemove;
+                @Remove.performed -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnRemove;
+                @Remove.canceled -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnRemove;
+                @Counterrotate.started -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnCounterrotate;
+                @Counterrotate.performed -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnCounterrotate;
+                @Counterrotate.canceled -= m_Wrapper.m_ShipwrightActionsCallbackInterface.OnCounterrotate;
+            }
+            m_Wrapper.m_ShipwrightActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Place.started += instance.OnPlace;
+                @Place.performed += instance.OnPlace;
+                @Place.canceled += instance.OnPlace;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
+                @Remove.started += instance.OnRemove;
+                @Remove.performed += instance.OnRemove;
+                @Remove.canceled += instance.OnRemove;
+                @Counterrotate.started += instance.OnCounterrotate;
+                @Counterrotate.performed += instance.OnCounterrotate;
+                @Counterrotate.canceled += instance.OnCounterrotate;
+            }
+        }
+    }
+    public ShipwrightActions @Shipwright => new ShipwrightActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1501,6 +1623,12 @@ public partial class @InputWrapper : IInputActionCollection2, IDisposable
         void OnEnableRotation(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+    }
+    public interface IShipwrightActions
+    {
         void OnPlace(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnRemove(InputAction.CallbackContext context);
+        void OnCounterrotate(InputAction.CallbackContext context);
     }
 }

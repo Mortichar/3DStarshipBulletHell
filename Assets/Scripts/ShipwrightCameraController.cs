@@ -47,8 +47,8 @@ public class ShipwrightCameraController : MonoBehaviour
     {
         var forward = direction.y;
         var right = direction.x;
-        transform.position += transform.forward * forward;
-        transform.position += transform.right * right;
+        transform.position += transform.forward * forward * Time.deltaTime * movementSpeed;
+        transform.position += transform.right * right * Time.deltaTime * movementSpeed;
     }
     void EnableRotation(InputAction.CallbackContext context)
     {

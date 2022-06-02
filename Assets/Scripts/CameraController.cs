@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public new Camera camera;
 
     public float zoomSpeed = 25f;
-    public float rotateSpeed = 25f;
+    public float rotationSpeed = 25f;
 
     public float minZoomDistance = 1f;
     public float maxZoomDistance = 100f;
